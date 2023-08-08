@@ -147,6 +147,9 @@ dokku config:set local-app SERVICE_PORT=8080
 # set the domains desired
 dokku domains:set local-app local-app.dokku.me
 
+# add https 443 port, skip it if you only use http
+dokku proxy:ports-set local-app https:443:5000 http:80:5000 
+
 # deploy the service-proxy image
 dokku git:from-image local-app dokku/service-proxy:latest
 ```
